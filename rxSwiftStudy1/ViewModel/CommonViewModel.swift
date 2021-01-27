@@ -12,11 +12,11 @@ import RxSwift
 class CommonViewModel : NSObject{
     let title : Driver<String>
     let sceneCoordinator: SceneCoordinatorType
-    let storage: CityStorageType
+    let newsList : [News]
     
-    init(title : String, sceneCoordinator : SceneCoordinatorType, storage : CityStorageType) {
+    init(title : String, sceneCoordinator : SceneCoordinatorType, newsList : [News]) {
         self.title = Observable.just(title).asDriver(onErrorJustReturn: "")
         self.sceneCoordinator = sceneCoordinator
-        self.storage = storage
+        self.newsList = newsList
     }
 }

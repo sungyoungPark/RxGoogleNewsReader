@@ -41,13 +41,14 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
     func bindViewModel() {
         
         viewModel.cityList
-            .bind(to: tableView.rx.items(cellIdentifier: "cityCell")) {
-                (index: Int, element: String, cell: UITableViewCell) in
-                cell.textLabel?.text = element
+            .bind(to: tableView.rx.items(cellIdentifier: "newsCell")) {
+                (index: Int, element: News, cell: NewsTableViewCell) in
+                cell.newsTitle.text = element.title
+                //cell.newsDescription.text = element.url
             }
             .disposed(by: disposeBag)
            
-        
+        /*
         searchBar.rx.text //RxCocoa의 Observable 속성
             .orEmpty //옵셔널이 아니도록 만든다.
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)  //0.5초 기다린다.
@@ -57,9 +58,16 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
                 self.viewModel.search($0)
             }
             .disposed(by: disposeBag)
-     
-        
-        
+     */
+    
+    /*
+        tableView.rx.itemSelected
+            .bind{
+                print($0.item)
+                self.viewModel.remove($0.item)
+            }
+            .disposed(by: disposeBag)
+        */
         
     }
     

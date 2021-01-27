@@ -14,9 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let storage = CityStorage()
+        let manager = XMLParserManager()
+        manager.start()
+        print("manager",manager.newsList?.count)
         let coordinator = SceneCoordinator(window: window!)
-        let firstViewModel = FirstViewModel(title: "나의 메모", sceneCoordinator: coordinator, storage: storage)
+        let firstViewModel = FirstViewModel(title: "나의 메모", sceneCoordinator: coordinator, newsList : manager.newsList!)
         let listScene = Scene.list(firstViewModel)
         
         coordinator.transition(to: listScene, using: .root, animated: false)
