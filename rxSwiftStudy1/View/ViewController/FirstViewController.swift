@@ -22,6 +22,10 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let manager = HTMLParserManager()
+        manager.getHTML()
+        
         /*
         tableView.dataSource = self
         tableView.delegate = self
