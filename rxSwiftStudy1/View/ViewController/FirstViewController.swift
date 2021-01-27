@@ -19,12 +19,13 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
     //var shownCities = [String]()
     //let allCities = ["New York","London","Oslo","Warsaw","Seoul","Tokyo","GoYang","Praga","Berlin"]
     let disposeBag = DisposeBag()
+    let manager = HTMLParserManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let manager = HTMLParserManager()
-        manager.getHTML()
+    
+       
         
         /*
         tableView.dataSource = self
@@ -48,7 +49,9 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
             .bind(to: tableView.rx.items(cellIdentifier: "newsCell")) {
                 (index: Int, element: News, cell: NewsTableViewCell) in
                 cell.newsTitle.text = element.title
-                //cell.newsDescription.text = element.url
+                self.manager.getHTML(element.url){ v in
+                    print(element.title,element.url,v)
+                }
             }
             .disposed(by: disposeBag)
            

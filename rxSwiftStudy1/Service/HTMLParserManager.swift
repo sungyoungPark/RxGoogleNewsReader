@@ -9,8 +9,8 @@ import UIKit
 
 class HTMLParserManager {
     
-    func getHTML(_ news : News){
-        let urlPath = "https://news.google.com/__i/rss/rd/articles/CBMiMWh0dHBzOi8vd3d3Lnl0bi5jby5rci9fbG4vMDEwMV8yMDIxMDEyNzIyMDgxMjQyMznSAUNodHRwczovL20ueXRuLmNvLmtyL25ld3Nfdmlldy5hbXAucGhwP3BhcmFtPTAxMDFfMjAyMTAxMjcyMjA4MTI0MjM5?oc=5"
+    func getHTML(_ urlPath : String, completionBlock: @escaping (String) -> Void) -> Void {
+     //   let urlPath = "https://news.google.com/__i/rss/rd/articles/CBMiMWh0dHBzOi8vd3d3Lnl0bi5jby5rci9fbG4vMDEwMV8yMDIxMDEyNzIyMDgxMjQyMznSAUNodHRwczovL20ueXRuLmNvLmtyL25ld3Nfdmlldy5hbXAucGhwP3BhcmFtPTAxMDFfMjAyMTAxMjcyMjA4MTI0MjM5?oc=5"
         let url = NSURL(string: urlPath)
 
 
@@ -23,10 +23,10 @@ class HTMLParserManager {
             if error == nil{
                 let urlContent = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)?.components(separatedBy: ["\n","\t"])
                     .filter { $0.range(of: "og:image") != nil }
-                    .filter{ $0.range(of: "http") != nil }.map{ String($0).hrefUrl }
+                    .filter{ $0.range(of: "http") != nil }.map{ String($0).hrefUrl }.joined()
                 
                 print(urlContent ?? "no contents found")
-        
+                completionBlock(urlContent!)
             } else {
                 print("Eror 발생")
             }
