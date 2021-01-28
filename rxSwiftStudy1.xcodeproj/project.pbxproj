@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B08C1EE25C31402007878E8 /* NewsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B08C1ED25C31402007878E8 /* NewsStorage.swift */; };
 		5B0C1CD425BAC8B500F5BEB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C1CD325BAC8B500F5BEB4 /* AppDelegate.swift */; };
 		5B0C1CD625BAC8B500F5BEB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C1CD525BAC8B500F5BEB4 /* SceneDelegate.swift */; };
 		5B0C1CD825BAC8B500F5BEB4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0C1CD725BAC8B500F5BEB4 /* FirstViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B08C1ED25C31402007878E8 /* NewsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStorage.swift; sourceTree = "<group>"; };
 		5B0C1CD025BAC8B500F5BEB4 /* rxSwiftStudy1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxSwiftStudy1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0C1CD325BAC8B500F5BEB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B0C1CD525BAC8B500F5BEB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,8 +138,9 @@
 			children = (
 				5B40BA1B25C0A5AF00543C04 /* CityStorage.swift */,
 				5B40BA1F25C0A67500543C04 /* CityStorageType.swift */,
-				5B4CDF2C25C1B7CB005EFC70 /* XMLParserManager.swift */,
 				5B63A07A25C1EA03007A4A34 /* HTMLParserManager.swift */,
+				5B4CDF2C25C1B7CB005EFC70 /* XMLParserManager.swift */,
+				5B08C1ED25C31402007878E8 /* NewsStorage.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				5B40B9F425C09A0D00543C04 /* Scene.swift in Sources */,
 				5B40B9FF25C09A7900543C04 /* SceneCoordinatorType.swift in Sources */,
 				5B40BA1C25C0A5AF00543C04 /* CityStorage.swift in Sources */,
+				5B08C1EE25C31402007878E8 /* NewsStorage.swift in Sources */,
 				5B4CDF3125C1C822005EFC70 /* News.swift in Sources */,
 				5B40BA2025C0A67500543C04 /* CityStorageType.swift in Sources */,
 				5B40B9F825C09A2C00543C04 /* SceneCoordinator.swift in Sources */,

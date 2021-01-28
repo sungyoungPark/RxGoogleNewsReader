@@ -22,9 +22,8 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
-       
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
         
         /*
         tableView.dataSource = self
@@ -44,6 +43,17 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
     
     func bindViewModel() {
         
+        viewModel.list
+            .bind(to: tableView.rx.items(cellIdentifier: "newsCell")){
+                (index: Int, element: News, cell: NewsTableViewCell) in
+                print("bind",element.title,element.description)
+                cell.newsTitle.text = element.title
+                cell.newsDescription.text = element.description
+
+            }
+            .disposed(by: disposeBag)
+        
+        /*
         viewModel.cityList
             .bind(to: tableView.rx.items(cellIdentifier: "newsCell")) {
                 (index: Int, element: News, cell: NewsTableViewCell) in
@@ -51,7 +61,7 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
                 cell.newsDescription.text = element.description
             }
             .disposed(by: disposeBag)
-          
+          */
        
         
         /*
@@ -75,29 +85,22 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
             .disposed(by: disposeBag)
         */
         
+        tableView.rx.itemSelected
+            .bind{
+                self.viewModel.tap(index: $0[1])
+            }
+        
     }
     
     
 
 }
 
-/*
-extension ViewController : UITableViewDataSource, UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shownCities.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath)
-        cell.textLabel?.text = shownCities[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        
+
+extension FirstViewController :  UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
     }
     
 }
-*/
+

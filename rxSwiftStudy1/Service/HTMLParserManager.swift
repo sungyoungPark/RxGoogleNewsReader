@@ -4,7 +4,7 @@
 //
 //  Created by 박성영 on 2021/01/28.
 //
-
+/*
 import UIKit
 
 class HTMLParserManager {
@@ -77,3 +77,4 @@ extension String {
     return ""
   }
 }
+*/

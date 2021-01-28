@@ -21,4 +21,11 @@ class News{
         self.description = ""
     }
     
+    init(title : String, url : String, imageURL : String, description : String) {
+        self.title = title
+        self.url = url
+        self.imageURL = imageURL
+        self.description = description
+    }
+    
 }
