@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let manager = XMLParserManager()
         manager.start()
-        print("manager",manager.newsList?.count)
+        let html = HTMLParserManager(newsList: manager.newsList!)
         let coordinator = SceneCoordinator(window: window!)
-        let firstViewModel = FirstViewModel(title: "나의 메모", sceneCoordinator: coordinator, newsList : manager.newsList!)
+        let firstViewModel = FirstViewModel(title: "나의 메모", sceneCoordinator: coordinator, newsList : html.finList)
         let listScene = Scene.list(firstViewModel)
         
         coordinator.transition(to: listScene, using: .root, animated: false)

@@ -13,12 +13,12 @@ import Action
 class FirstViewModel : CommonViewModel{
     
     //private var allCities = ["New York","London","Oslo","Warsaw","Seoul","Tokyo","GoYang","Praga","Berlin"]
-    
     private lazy var shownCities = BehaviorSubject<[News]>(value: newsList)
  
     var cityList : Observable<[News]> {
         return shownCities
     }
+    
     
 /*
     func search(_ str : String){

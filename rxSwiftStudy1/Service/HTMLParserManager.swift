@@ -9,24 +9,42 @@ import UIKit
 
 class HTMLParserManager {
     
-    func getHTML(_ urlPath : String, completionBlock: @escaping (String) -> Void) -> Void {
-     //   let urlPath = "https://news.google.com/__i/rss/rd/articles/CBMiMWh0dHBzOi8vd3d3Lnl0bi5jby5rci9fbG4vMDEwMV8yMDIxMDEyNzIyMDgxMjQyMznSAUNodHRwczovL20ueXRuLmNvLmtyL25ld3Nfdmlldy5hbXAucGhwP3BhcmFtPTAxMDFfMjAyMTAxMjcyMjA4MTI0MjM5?oc=5"
+    var finList : [News]
+    var count = 0
+    
+    init(newsList : [News]) {
+        finList = [News]()
+        var index = 0
+
+        for news in newsList{
+            getHTML(news.url){ res in
+                let add = News()
+                add.title = news.title
+                add.description = res
+                self.finList.append(add)
+            }
+        }
+    }
+    
+    
+    func getHTML(_ urlPath : String ,completionBlock: @escaping (String) -> Void) -> Void {
+      
         let url = NSURL(string: urlPath)
 
-
         let session = URLSession.shared
-
 
         let task = session.dataTask(with: url! as URL, completionHandler: {
             (data, respons, error) -> Void in
             
             if error == nil{
-                let urlContent = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)?.components(separatedBy: ["\n","\t"])
+                let urlContent = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)?.components(separatedBy: ["<",">"])
                     .filter { $0.range(of: "og:image") != nil }
                     .filter{ $0.range(of: "http") != nil }.map{ String($0).hrefUrl }.joined()
                 
                 print(urlContent ?? "no contents found")
-                completionBlock(urlContent!)
+                if (urlContent != nil){
+                    completionBlock(urlContent!)
+                }
             } else {
                 print("Eror 발생")
             }

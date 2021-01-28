@@ -10,12 +10,14 @@ import Foundation
 class News{
     var title : String
     var url : String
+    var imageURL : String
     var description : String
     
     
     init() {
         self.title = ""
         self.url = ""
+        self.imageURL = ""
         self.description = ""
     }
     

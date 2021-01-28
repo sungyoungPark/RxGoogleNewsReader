@@ -5,7 +5,7 @@
 //  Created by 박성영 on 2021/01/28.
 //
 
-import Foundation
+import UIKit
 
 class XMLParserManager : NSObject, XMLParserDelegate{
     
@@ -44,8 +44,33 @@ class XMLParserManager : NSObject, XMLParserDelegate{
         
         if elementName == "item"{
             newsList?.append(news!)
+            
+            let url = NSURL(string: news!.url)
+            let session = URLSession.shared
+            
+            let task = session.dataTask(with: url! as URL, completionHandler: {
+                (data, respons, error) -> Void in
+                
+                if error == nil{
+                    let urlContent = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)?.components(separatedBy: ["<",">"])
+                        .filter { $0.range(of: "og:image") != nil }
+                        .filter{ $0.range(of: "http") != nil }.map{ String($0).hrefUrl }.joined()
+                    
+                    print(urlContent ?? "no contents found")
+                    
+                    if urlContent != nil{
+                        self.news?.imageURL = urlContent!
+                        self.newsList?.append(self.news!)
+                    }
+                } else {
+                    print("Eror 발생")
+                }
+                
+            })
+            
+            task.resume()
         }
-
+        
     }
     
 }

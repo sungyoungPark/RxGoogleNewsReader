@@ -19,7 +19,6 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
     //var shownCities = [String]()
     //let allCities = ["New York","London","Oslo","Warsaw","Seoul","Tokyo","GoYang","Praga","Berlin"]
     let disposeBag = DisposeBag()
-    let manager = HTMLParserManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +48,12 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
             .bind(to: tableView.rx.items(cellIdentifier: "newsCell")) {
                 (index: Int, element: News, cell: NewsTableViewCell) in
                 cell.newsTitle.text = element.title
-                self.manager.getHTML(element.url){ v in
-                    print(element.title,element.url,v)
-                }
+                cell.newsDescription.text = element.description
             }
             .disposed(by: disposeBag)
-           
+          
+       
+        
         /*
         searchBar.rx.text //RxCocoa의 Observable 속성
             .orEmpty //옵셔널이 아니도록 만든다.
