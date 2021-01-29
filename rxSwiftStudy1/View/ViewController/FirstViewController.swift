@@ -89,7 +89,7 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
 
 extension FirstViewController :  UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return tableView.bounds.height/8
     }
     
 }

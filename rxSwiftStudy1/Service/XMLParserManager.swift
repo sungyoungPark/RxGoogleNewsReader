@@ -53,8 +53,9 @@ class XMLParserManager : NSObject, XMLParserDelegate{
             
             let news = News()
             news.title = title!
-            
+            news.url = link!
             let url = NSURL(string: link!)
+            
             let session = URLSession.shared
             
             let task = session.dataTask(with: url! as URL, completionHandler: {
@@ -71,12 +72,10 @@ class XMLParserManager : NSObject, XMLParserDelegate{
                             .filter { $0.range(of: "og:description") != nil }
                             .map{ String($0).hrefUrl }.joined().replacingOccurrences(of: "/", with: "")
                             
-                        
-                        print("des",description, url )
+                        //print("des",description, url )
                         if (!description.isEmpty){
                         //print(urlContent ?? "no contents found")
                             news.description = description
-                            //print("추가",news.title,urlContent)
                             news.imageURL = urlContent
                             self.storage.createNews(news: news)
                         }

@@ -18,7 +18,6 @@ class NewsStorage {
         //let news = News(title: title, url: url, imageURL: imageURL, description: description)
         //newsList.insert(news, at: newsList.count)
         newsList.append(news)
-        
         store.onNext(newsList)     //subject에서 새로운 next 이벤트 방출
     
     }
@@ -29,7 +28,7 @@ class NewsStorage {
     }
     
     func getNews(index : Int)  {
-        print("tap ",index,"/" ,newsList[index].title ," / " ,newsList[index].description,newsList.count)
+        print("tap ",index,"/" ,newsList[index].url ," / " ,newsList[index].description,newsList[index].imageURL)
     }
     
 }
