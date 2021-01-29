@@ -5,26 +5,26 @@
 //  Created by 박성영 on 2021/01/28.
 //
 
-import Foundation
+import UIKit
 
 class News{
     var title : String
     var url : String
-    var imageURL : String
+    var image : UIImage?
     var description : String
     
     
     init() {
         self.title = ""
         self.url = ""
-        self.imageURL = ""
+        self.image = UIImage()
         self.description = ""
     }
     
-    init(title : String, url : String, imageURL : String, description : String) {
+    init(title : String, url : String, image : UIImage, description : String) {
         self.title = title
         self.url = url
-        self.imageURL = imageURL
+        self.image = image
         self.description = description
     }
     

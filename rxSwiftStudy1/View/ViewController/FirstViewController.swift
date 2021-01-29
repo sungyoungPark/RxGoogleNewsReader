@@ -49,7 +49,7 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
                 print("bind",element.title,element.description)
                 cell.newsTitle.text = element.title
                 cell.newsDescription.text = element.description
-
+                cell.thumbnailImageView.image = element.image
             }
             .disposed(by: disposeBag)
        

@@ -71,12 +71,22 @@ class XMLParserManager : NSObject, XMLParserDelegate{
                         let description  = html
                             .filter { $0.range(of: "og:description") != nil }
                             .map{ String($0).hrefUrl }.joined().replacingOccurrences(of: "/", with: "")
-                            
+                        
                         //print("des",description, url )
                         if (!description.isEmpty){
-                        //print(urlContent ?? "no contents found")
+                            //print(urlContent ?? "no contents found")
                             news.description = description
-                            news.imageURL = urlContent
+                            // news.imageURL = urlContent
+                            
+                            if let imageURL = URL(string: urlContent){
+                                
+                                DispatchQueue.global().async {
+                                    let data = try? Data(contentsOf: imageURL)
+                                    DispatchQueue.main.async {
+                                        news.image = UIImage(data: data!)
+                                    }
+                                }
+                            }
                             self.storage.createNews(news: news)
                         }
                     }

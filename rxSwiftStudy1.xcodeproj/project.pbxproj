@@ -182,8 +182,8 @@
 		5B4CDF3B25C1E623005EFC70 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				5B0C1CD925BAC8B500F5BEB4 /* Main.storyboard */,
 				5B0C1CDE25BAC8B700F5BEB4 /* LaunchScreen.storyboard */,
+				5B0C1CD925BAC8B500F5BEB4 /* Main.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
