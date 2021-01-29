@@ -52,16 +52,6 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
 
             }
             .disposed(by: disposeBag)
-        
-        /*
-        viewModel.cityList
-            .bind(to: tableView.rx.items(cellIdentifier: "newsCell")) {
-                (index: Int, element: News, cell: NewsTableViewCell) in
-                cell.newsTitle.text = element.title
-                cell.newsDescription.text = element.description
-            }
-            .disposed(by: disposeBag)
-          */
        
         
         /*
@@ -99,7 +89,7 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
 
 extension FirstViewController :  UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 200
     }
     
 }

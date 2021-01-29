@@ -70,6 +70,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B08C1F125C33EC0007878E8 /* notuse */ = {
+			isa = PBXGroup;
+			children = (
+				5B40BA1B25C0A5AF00543C04 /* CityStorage.swift */,
+				5B40BA1F25C0A67500543C04 /* CityStorageType.swift */,
+				5B63A07A25C1EA03007A4A34 /* HTMLParserManager.swift */,
+			);
+			path = notuse;
+			sourceTree = "<group>";
+		};
 		5B0C1CC725BAC8B500F5BEB4 = {
 			isa = PBXGroup;
 			children = (
@@ -136,9 +146,7 @@
 		5B40BA1A25C0A59B00543C04 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				5B40BA1B25C0A5AF00543C04 /* CityStorage.swift */,
-				5B40BA1F25C0A67500543C04 /* CityStorageType.swift */,
-				5B63A07A25C1EA03007A4A34 /* HTMLParserManager.swift */,
+				5B08C1F125C33EC0007878E8 /* notuse */,
 				5B4CDF2C25C1B7CB005EFC70 /* XMLParserManager.swift */,
 				5B08C1ED25C31402007878E8 /* NewsStorage.swift */,
 			);

@@ -16,10 +16,11 @@ class NewsStorage {
     func createNews(news : News) { //새로운 메모를 생성하고 배열에 추가
         //print("추가",newsList.count)
         //let news = News(title: title, url: url, imageURL: imageURL, description: description)
-        newsList.insert(news, at: 0)
+        //newsList.insert(news, at: newsList.count)
+        newsList.append(news)
         
         store.onNext(newsList)     //subject에서 새로운 next 이벤트 방출
-        
+    
     }
     
     
@@ -28,7 +29,7 @@ class NewsStorage {
     }
     
     func getNews(index : Int)  {
-        print("tap ",index,"/" ,newsList[index].title ," / " ,newsList[index].description)
+        print("tap ",index,"/" ,newsList[index].title ," / " ,newsList[index].description,newsList.count)
     }
     
 }

@@ -73,12 +73,13 @@ class XMLParserManager : NSObject, XMLParserDelegate{
                             
                         
                         print("des",description, url )
+                        if (!description.isEmpty){
                         //print(urlContent ?? "no contents found")
                             news.description = description
                             //print("추가",news.title,urlContent)
                             news.imageURL = urlContent
                             self.storage.createNews(news: news)
-                        
+                        }
                     }
                 } else {
                     print("Eror 발생")
