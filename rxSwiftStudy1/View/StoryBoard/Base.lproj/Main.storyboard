@@ -107,6 +107,40 @@
             </objects>
             <point key="canvasLocation" x="1050.7246376811595" y="102.45535714285714"/>
         </scene>
+        <!--Web News View Controller-->
+        <scene sceneID="GGg-X9-VZb">
+            <objects>
+                <viewController storyboardIdentifier="webnewsVC" id="qFH-wo-E1y" customClass="WebNewsViewController" customModule="rxSwiftStudy1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k9m-Oe-42f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKa-HD-IBP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2n3-YP-VMe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YKa-HD-IBP" firstAttribute="leading" secondItem="2n3-YP-VMe" secondAttribute="leading" id="6kU-09-MWi"/>
+                            <constraint firstItem="2n3-YP-VMe" firstAttribute="bottom" secondItem="YKa-HD-IBP" secondAttribute="bottom" id="OdK-Tc-dsa"/>
+                            <constraint firstItem="YKa-HD-IBP" firstAttribute="top" secondItem="2n3-YP-VMe" secondAttribute="top" id="ZSW-Th-5yL"/>
+                            <constraint firstItem="2n3-YP-VMe" firstAttribute="trailing" secondItem="YKa-HD-IBP" secondAttribute="trailing" id="nhj-7O-K1L"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newsWebView" destination="YKa-HD-IBP" id="NGm-C5-nPi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DUQ-7K-0FG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2014" y="102"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="kuA-iG-azc">
             <objects>

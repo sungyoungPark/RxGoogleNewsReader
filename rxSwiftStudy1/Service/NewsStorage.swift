@@ -28,7 +28,7 @@ class NewsStorage {
     }
     
     func getNews(index : Int)  {
-        print("tap ",index,"/" ,newsList[index].url ," / " ,newsList[index].description)
+        print("tap ",index,"/" ,newsList[index].url, newsList[index].image )
     }
     
 }

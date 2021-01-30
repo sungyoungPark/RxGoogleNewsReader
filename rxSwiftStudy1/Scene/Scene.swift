@@ -8,7 +8,7 @@ import UIKit
 
 enum Scene {
     case list(FirstViewModel)
-
+    case webNews(WebNewsViewModel)
 }
 
 
@@ -32,6 +32,16 @@ extension Scene {
             firstVC.bind(viewModel: viewModel)
             return nav
        
+        case .webNews(let viewModel):
+            guard var webnewsVC = storyboard.instantiateViewController(withIdentifier: "webnewsVC") as? WebNewsViewController
+            else{
+                fatalError()
+            }
+            
+            webnewsVC.bind(viewModel: viewModel)
+            return webnewsVC
+            
+            
         }
     }
 }

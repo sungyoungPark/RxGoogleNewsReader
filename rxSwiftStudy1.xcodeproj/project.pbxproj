@@ -14,6 +14,8 @@
 		5B0C1CDB25BAC8B500F5BEB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0C1CD925BAC8B500F5BEB4 /* Main.storyboard */; };
 		5B0C1CDD25BAC8B700F5BEB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0C1CDC25BAC8B700F5BEB4 /* Assets.xcassets */; };
 		5B0C1CE025BAC8B700F5BEB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B0C1CDE25BAC8B700F5BEB4 /* LaunchScreen.storyboard */; };
+		5B2FADD025C48FA400B7EB41 /* WebNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FADCF25C48FA400B7EB41 /* WebNewsViewController.swift */; };
+		5B2FADD325C4900300B7EB41 /* WebNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FADD225C4900300B7EB41 /* WebNewsViewModel.swift */; };
 		5B40B9F425C09A0D00543C04 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40B9F325C09A0D00543C04 /* Scene.swift */; };
 		5B40B9F825C09A2C00543C04 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40B9F725C09A2C00543C04 /* SceneCoordinator.swift */; };
 		5B40B9FB25C09A4D00543C04 /* TransitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B40B9FA25C09A4D00543C04 /* TransitionModel.swift */; };
@@ -40,6 +42,8 @@
 		5B0C1CDC25BAC8B700F5BEB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B0C1CDF25BAC8B700F5BEB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B0C1CE125BAC8B700F5BEB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B2FADCF25C48FA400B7EB41 /* WebNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNewsViewController.swift; sourceTree = "<group>"; };
+		5B2FADD225C4900300B7EB41 /* WebNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNewsViewModel.swift; sourceTree = "<group>"; };
 		5B40B9F325C09A0D00543C04 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		5B40B9F725C09A2C00543C04 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		5B40B9FA25C09A4D00543C04 /* TransitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionModel.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				5B40BA0725C09B5A00543C04 /* FirstViewModel.swift */,
+				5B2FADD225C4900300B7EB41 /* WebNewsViewModel.swift */,
 				5B40BA0A25C09C1400543C04 /* CommonViewModel.swift */,
 			);
 			path = ViewModel;
@@ -138,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5B0C1CD725BAC8B500F5BEB4 /* FirstViewController.swift */,
+				5B2FADCF25C48FA400B7EB41 /* WebNewsViewController.swift */,
 				5B40BA0E25C09CB000543C04 /* ViewModelBindableType .swift */,
 			);
 			path = ViewController;
@@ -325,6 +331,8 @@
 				5B40B9FF25C09A7900543C04 /* SceneCoordinatorType.swift in Sources */,
 				5B40BA1C25C0A5AF00543C04 /* CityStorage.swift in Sources */,
 				5B08C1EE25C31402007878E8 /* NewsStorage.swift in Sources */,
+				5B2FADD025C48FA400B7EB41 /* WebNewsViewController.swift in Sources */,
+				5B2FADD325C4900300B7EB41 /* WebNewsViewModel.swift in Sources */,
 				5B4CDF3125C1C822005EFC70 /* News.swift in Sources */,
 				5B40BA2025C0A67500543C04 /* CityStorageType.swift in Sources */,
 				5B40B9F825C09A2C00543C04 /* SceneCoordinator.swift in Sources */,
@@ -486,6 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VDFGK9GV66;
 				INFOPLIST_FILE = rxSwiftStudy1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -506,6 +515,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VDFGK9GV66;
 				INFOPLIST_FILE = rxSwiftStudy1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

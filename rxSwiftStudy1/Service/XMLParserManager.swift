@@ -81,9 +81,10 @@ class XMLParserManager : NSObject, XMLParserDelegate{
                             if let imageURL = URL(string: urlContent){
                                 
                                 DispatchQueue.global().async {
-                                    let data = try? Data(contentsOf: imageURL)
-                                    DispatchQueue.main.async {
-                                        news.image = UIImage(data: data!)
+                                    if let data = try? Data(contentsOf: imageURL) {
+                                        DispatchQueue.main.async {
+                                            news.image = UIImage(data: data)
+                                        }
                                     }
                                 }
                             }

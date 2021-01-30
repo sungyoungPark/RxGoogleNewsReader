@@ -46,7 +46,7 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
         viewModel.list
             .bind(to: tableView.rx.items(cellIdentifier: "newsCell")){
                 (index: Int, element: News, cell: NewsTableViewCell) in
-                print("bind",element.title,element.description)
+                //print("bind",element.title,element.description)
                 cell.newsTitle.text = element.title
                 cell.newsDescription.text = element.description
                 cell.thumbnailImageView.image = element.image
