@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         manager.start()
        
         let coordinator = SceneCoordinator(window: window!)
-        let firstViewModel = FirstViewModel(title: "나의 메모", sceneCoordinator: coordinator, manager: manager)
+        let firstViewModel = FirstViewModel(title: "나의 뉴스", sceneCoordinator: coordinator, manager: manager)
         let listScene = Scene.list(firstViewModel)
         
         coordinator.transition(to: listScene, using: .root, animated: false)

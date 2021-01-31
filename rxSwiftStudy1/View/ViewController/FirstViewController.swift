@@ -65,21 +65,26 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
             }
             .disposed(by: disposeBag)
      */
-    
-    /*
-        tableView.rx.itemSelected
-            .bind{
-                print($0.item)
-                self.viewModel.remove($0.item)
-            }
-            .disposed(by: disposeBag)
-        */
         
+        //선택한 셀에 인덱스가 필요하면 itemSelected를 사용, 선택한 셀에 데이터가 필요하면 modelSelected를 사용
+        // 두 개를 합치기 위해 zip을 사용 , 두개의 결과가 튜플 형식으로 반환
+        Observable.zip(tableView.rx.modelSelected(News.self), tableView.rx.itemSelected)
+            .do( onNext : { [unowned self] (_ , indexPath) in
+                self.tableView.deselectRow(at: indexPath, animated: true )
+    
+            })
+            .map{ $0.0 }
+            .bind(to: viewModel.detailNews.inputs)
+            .disposed(by: disposeBag)
+        
+     
+        
+        /*
         tableView.rx.itemSelected
             .bind{
                 self.viewModel.tap(index: $0[1])
             }
-        
+        */
     }
     
     

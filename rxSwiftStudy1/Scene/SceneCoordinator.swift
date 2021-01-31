@@ -9,6 +9,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+extension UIViewController {
+    var sceneViewController : UIViewController {
+        return self.children.first ?? self  //네비게이션 컨트롤러와 같은 컨테이너 뷰 컨트롤러라면 마지막 child 리턴, 나머지 경우는 self를 리턴
+    }
+}
+
+
 class SceneCoordinator : SceneCoordinatorType{  //화면 전환을 담당
     
     private let bag = DisposeBag() //리소스 정리를 위해 사용됨
@@ -29,9 +36,10 @@ class SceneCoordinator : SceneCoordinatorType{  //화면 전환을 담당
         
         switch style {
         case .root:  //rootviewController만 바꿔주면 됨
-            currentVC = target
+            currentVC = target.sceneViewController
             window.rootViewController = target
             subject.onCompleted()
+            
         case .push:  //navigationCotroller에 임베드 될때만 의미가 있음
             guard let nav = currentVC.navigationController  //navigationCotroller에 임베드 되어 있지 않다면 에러
             else{
@@ -39,15 +47,22 @@ class SceneCoordinator : SceneCoordinatorType{  //화면 전환을 담당
                 break
             }
             
+            //델리게이트 메소드가 호출되는 시점마다 next를 방출하는 컨트롤 이벤트임
+            nav.rx.willShow
+                .subscribe(onNext: { [unowned self] event in
+                    self.currentVC =  event.viewController.sceneViewController
+                })
+                .disposed(by: bag)
+            
             nav.pushViewController(target, animated: animated)
-            currentVC = target
+            currentVC = target.sceneViewController
             
             subject.onCompleted()
         case .modal:
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
             }
-            currentVC = target
+            currentVC = target.sceneViewController
 
         }
         
@@ -59,7 +74,7 @@ class SceneCoordinator : SceneCoordinatorType{  //화면 전환을 담당
         return Completable.create { [unowned self] completable in
             if let presentingVC = self.currentVC.presentingViewController{
                 self.currentVC.dismiss(animated: animated) {
-                    self.currentVC = presentingVC
+                    self.currentVC = presentingVC.sceneViewController
                     completable(.completed)
                 }
             }
