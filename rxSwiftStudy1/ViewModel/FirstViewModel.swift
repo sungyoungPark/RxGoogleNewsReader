@@ -15,23 +15,15 @@ class FirstViewModel : CommonViewModel{
     var list : Observable<[News]> {
         return manager.storage.getList()
     }
-    
-    //private var allCities = ["New York","London","Oslo","Warsaw","Seoul","Tokyo","GoYang","Praga","Berlin"]
-    //private lazy var shownCities = BehaviorSubject<[News]>(value: newsList)
- 
-   // var cityList : Observable<[News]> {
-   //     return shownCities
-   // }
-    
   
     func tap(index : Int){
         manager.storage.getNews(index: index)
     }
     
     lazy var detailNews : Action <News, Void> = {   //상세 뉴스 보기 화면과 바인딩
-        return Action { News  in
+        return Action { news  in
             let webnewsVM = WebNewsViewModel(title: "뉴스 상세", sceneCoordinator: self.sceneCoordinator, manager: self.manager)
-            
+            webnewsVM.url = news.url
             let newsScene = Scene.webNews(webnewsVM)
             
             return self.sceneCoordinator.transition(to: newsScene, using: .push, animated: true).asObservable().map{ _ in }

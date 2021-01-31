@@ -19,6 +19,7 @@ class WebNewsViewController: UIViewController, ViewModelBindableType{
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view생성")
+        print(viewModel.url)
         // Do any additional setup after loading the view.
     }
     
@@ -36,6 +37,12 @@ class WebNewsViewController: UIViewController, ViewModelBindableType{
          navigationItem.hidesBackButton = true
          navigationItem.leftBarButtonItem = backBTN
          */
+        
+        viewModel.link.bind{
+            self.newsWebView.load(URLRequest(url: URL(string: $0)!))
+        }
+        .disposed(by: disposeBag)
+        
     }
     
     
