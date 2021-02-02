@@ -1,5 +1,9 @@
 # RxGoogleNewsReader
 
++ RxSwift와 구글 뉴스 RSS를 이용한 뉴스 리더 앱
++ 기존에 Swift를 이용하여 만든 RSS 뉴스 리더 어플리케이션을 RxSwift를 공부하면서 만든 앱입니다.
++ 적용 기술 : RxSwift, MVVM-C 패턴
++ 기간 : 2021.01.22 ~ 2021.02.03
 
 ## ■ 앱 실행 이미지
 
