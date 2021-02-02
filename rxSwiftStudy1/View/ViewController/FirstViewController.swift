@@ -50,6 +50,7 @@ class FirstViewController: UIViewController, ViewModelBindableType  {
                 cell.newsTitle.text = element.title
                 cell.newsDescription.text = element.description
                 cell.thumbnailImageView.image = element.image
+                cell.newsKeyword.text = "/ " + element.keyWord.joined(separator: " / ") + " /"
             }
             .disposed(by: disposeBag)
        

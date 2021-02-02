@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pgw-Wa-pwn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -115,26 +116,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKa-HD-IBP">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TRJ-d2-gP6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1w-d7-zep">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키워드 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U07-Dt-On7">
+                                        <rect key="frame" x="0.0" y="42.5" width="414" height="42.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKa-HD-IBP">
+                                        <rect key="frame" x="0.0" y="85" width="414" height="767"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="D1w-d7-zep" firstAttribute="height" secondItem="TRJ-d2-gP6" secondAttribute="height" multiplier="0.05" id="j9E-JJ-sNk"/>
+                                    <constraint firstItem="U07-Dt-On7" firstAttribute="height" secondItem="TRJ-d2-gP6" secondAttribute="height" multiplier="0.05" id="lag-O6-4p2"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2n3-YP-VMe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="YKa-HD-IBP" firstAttribute="leading" secondItem="2n3-YP-VMe" secondAttribute="leading" id="6kU-09-MWi"/>
-                            <constraint firstItem="2n3-YP-VMe" firstAttribute="bottom" secondItem="YKa-HD-IBP" secondAttribute="bottom" id="OdK-Tc-dsa"/>
-                            <constraint firstItem="YKa-HD-IBP" firstAttribute="top" secondItem="2n3-YP-VMe" secondAttribute="top" id="ZSW-Th-5yL"/>
-                            <constraint firstItem="2n3-YP-VMe" firstAttribute="trailing" secondItem="YKa-HD-IBP" secondAttribute="trailing" id="nhj-7O-K1L"/>
+                            <constraint firstItem="TRJ-d2-gP6" firstAttribute="top" secondItem="2n3-YP-VMe" secondAttribute="top" id="TGN-hK-13I"/>
+                            <constraint firstItem="TRJ-d2-gP6" firstAttribute="leading" secondItem="2n3-YP-VMe" secondAttribute="leading" id="jem-Rp-JLQ"/>
+                            <constraint firstAttribute="bottom" secondItem="TRJ-d2-gP6" secondAttribute="bottom" id="pNX-mJ-2VS"/>
+                            <constraint firstAttribute="trailing" secondItem="TRJ-d2-gP6" secondAttribute="trailing" id="sEw-yD-Lj7"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="keyWordLabel" destination="U07-Dt-On7" id="5y4-Fr-TxW"/>
                         <outlet property="newsWebView" destination="YKa-HD-IBP" id="NGm-C5-nPi"/>
+                        <outlet property="titleLabel" destination="D1w-d7-zep" id="enP-93-mwb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUQ-7K-0FG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

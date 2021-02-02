@@ -11,6 +11,7 @@ import RxSwift
 class XMLParserManager : NSObject, XMLParserDelegate{
     
     let storage = NewsStorage()
+    let keyWordManager = KeyWordsManager()
     
     var currentElement : String?
     var isLock = false
@@ -68,7 +69,7 @@ class XMLParserManager : NSObject, XMLParserDelegate{
                             .filter { $0.range(of: "og:image") != nil }
                             .filter{ $0.range(of: "http") != nil }.map{ String($0).hrefUrl }.joined()
                         
-                        let description  = html
+                        let description = html
                             .filter { $0.range(of: "og:description") != nil }
                             .map{ String($0).hrefUrl }.joined().replacingOccurrences(of: "/", with: "")
                         
@@ -76,6 +77,7 @@ class XMLParserManager : NSObject, XMLParserDelegate{
                         if (!description.isEmpty){
                             //print(urlContent ?? "no contents found")
                             news.description = description
+                            news.keyWord = self.keyWordManager.makeKeyWords(description)
                             // news.imageURL = urlContent
                             
                             if let imageURL = URL(string: urlContent){

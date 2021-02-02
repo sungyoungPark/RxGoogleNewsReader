@@ -13,13 +13,16 @@ import WebKit
 class WebNewsViewController: UIViewController, ViewModelBindableType{
     
     @IBOutlet weak var newsWebView: WKWebView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var keyWordLabel: UILabel!
+    
     var viewModel: WebNewsViewModel!
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view생성")
-        print(viewModel.url)
+        //print("view생성")
+        //print(viewModel.url)
         // Do any additional setup after loading the view.
     }
     
@@ -38,8 +41,11 @@ class WebNewsViewController: UIViewController, ViewModelBindableType{
          navigationItem.leftBarButtonItem = backBTN
          */
         
-        viewModel.link.bind{
-            self.newsWebView.load(URLRequest(url: URL(string: $0)!))
+        viewModel.currentNews.bind{
+            print($0.description,$0.keyWord)
+            self.newsWebView.load(URLRequest(url: URL(string: $0.url)!))
+            self.titleLabel.text = "제목 : " + $0.title
+            self.keyWordLabel.text = "키워드 : " + $0.keyWord.joined(separator: " / ")
         }
         .disposed(by: disposeBag)
         

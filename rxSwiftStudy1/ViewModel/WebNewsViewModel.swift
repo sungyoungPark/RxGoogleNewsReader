@@ -12,9 +12,9 @@ import Action
 
 class WebNewsViewModel : CommonViewModel{
     
-    var url : String = ""
-    var link : Observable<String>{
-        return Observable.just(url)
+    var news = News()
+    var currentNews : Observable<News>{
+        return Observable.just(news)
     }
     
     lazy var popAction = CocoaAction { [unowned self] in
